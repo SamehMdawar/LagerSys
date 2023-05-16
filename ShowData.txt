@@ -1,0 +1,34 @@
+public void showTableData() {
+		DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(columnNames);
+        table.setModel(model);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        table.setFillsViewportHeight(true);
+        String uname = "";
+        String email = "";
+        String pass = "";
+        String cou = "";
+        try {
+        	PreparedStatement pst;
+            pst = con.prepareStatement("select * from category ");
+            ResultSet rs = pst.executeQuery();
+            int i = 0;
+            if (rs.next()) {
+                uname = rs.getString("name");
+                email = rs.getString("umail");
+                pass = rs.getString("upass");
+                cou = rs.getString("ucountry");
+                model.addRow(new Object[]{uname, email, pass, cou});
+                i++;
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+	}
+
+
+//////////////////////////////////////
+/*
+*https://www.c-sharpcorner.com/UploadFile/fd0172/display-records-from-database-using-jtable-in-java/
+*https://www.tutorialsfield.com/how-to-retrieve-data-from-database-and-display-it-in-jtable-using-java-swing/?utm_content=cmp-true
+*/

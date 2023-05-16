@@ -1,0 +1,4 @@
+category=new CategoryObjekt();
+				category.setName(txtVname.getText());
+				CategoryAction action=new CategoryAction();
+				action.add(category);
