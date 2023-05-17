@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.print.PrinterException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -29,6 +32,7 @@ import com.toedter.calendar.JDateChooser;
 
 import database.DbConnection;
 import date_action.OrderActionListener;
+import objekten.OrderAction;
 
 public class Order extends JPanel{
 	private JPanel panel;
@@ -133,12 +137,12 @@ public class Order extends JPanel{
 				/*
 				 * Print 2 Tabelle auf dem Papier
 				 */
-				MessageFormat headerOrder=new MessageFormat("Order");
+				
 				MessageFormat headerItem=new MessageFormat("Order Items");
 				MessageFormat footer=new MessageFormat("Sameh Mdawar - cbm GmbH Bremen");
 				try {
 					table.print(JTable.PrintMode.FIT_WIDTH, headerItem, footer);
-					table2.print(JTable.PrintMode.FIT_WIDTH, headerOrder, footer);
+					
 				} catch (PrinterException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -178,6 +182,20 @@ public class Order extends JPanel{
 		panel_1.add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DefaultTableModel model=(DefaultTableModel)table.getModel();
+				int s=table.getSelectedRow();
+				
+				txtid.setText(model.getValueAt(s, 0).toString());
+				comboPro.setSelectedIndex(s);
+				txtqty.setText(model.getValueAt(s, 2).toString());
+				txtPrice.setText(model.getValueAt(s, 3).toString());
+				txtTotal.setText(model.getValueAt(s, 4).toString());
+							
+			}
+		});
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_2 = new JLabel("Order Items");
@@ -200,7 +218,34 @@ public class Order extends JPanel{
 		scrollPane_1.setBounds(10, 36, 592, 152);
 		panel_1_1.add(scrollPane_1);
 		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd.MM.yyyy");
+        
+        Date date=new Date();
+        dateChooser.setDate(date);
+		
+		dateChooser.setBounds(120, 138, 193, 20);
+		panel.add(dateChooser);
+		
 		table2 = new JTable();
+		table2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DefaultTableModel model=(DefaultTableModel)table2.getModel();
+				int s=table2.getSelectedRow();
+				System.out.println(s);
+				txtid.setText(model.getValueAt(s, 1).toString());
+				System.out.println(txtid.getText());
+				txtTotal.setText(model.getValueAt(s, 2).toString());
+				OrderAction filter = new OrderAction();
+				filter.itemfilter(txtid,table);
+				//Das Zeile kommt aus https://www.youtube.com/watch?v=-P4RN45wyh0
+				((JTextField)dateChooser.getDateEditor().getUiComponent()).setText(model.getValueAt(s, 3).toString());
+				//
+				
+	
+			}
+		});
 		scrollPane_1.setViewportView(table2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Orders");
@@ -222,12 +267,7 @@ public class Order extends JPanel{
 		
 		
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("dd.MM.yyyy");
-		
-	
-		dateChooser.setBounds(120, 138, 193, 20);
-		panel.add(dateChooser);
+
 		//SimpleDateFormat sdf=new SimpleDateFormat();
 		//String date=sdf.format(dateChooser.getDate());
 		
