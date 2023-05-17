@@ -14,7 +14,7 @@ import database.DbConnection;
 import date_action.OrderInterface;
 
 /**
- * Die Class macht die Datenbank function (CRUD) für"Order" Oberfläche;
+ * Die Class macht die Datenbank function (CRUD) für"Order" Oberfläche und sie implementiert OrderInterface;
  * @author samehm
  *
  */
