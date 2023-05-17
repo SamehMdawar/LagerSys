@@ -265,12 +265,6 @@ public class Order extends JPanel{
 		lblQty.setBounds(20, 171, 76, 14);
 		panel.add(lblQty);
 		
-		
-		
-
-		//SimpleDateFormat sdf=new SimpleDateFormat();
-		//String date=sdf.format(dateChooser.getDate());
-		
 		/*
 		 * ActionListener für Button
 		 */
@@ -339,8 +333,6 @@ public class Order extends JPanel{
 		try {
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
-			
-			
 			while(rs.next()) {
 				id=rs.getString("id");
 				order_no=rs.getString("order_no");

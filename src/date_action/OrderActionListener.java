@@ -12,7 +12,11 @@ import com.toedter.calendar.JDateChooser;
 
 import objekten.OrderAction;
 import objekten.OrderObjekt;
-
+/**
+ * Die Class ist als ActionListener für Buttons auf "Order" Oberfläche
+ * @author samehm
+ *
+ */
 public class OrderActionListener implements ActionListener{ 
 	private JButton button;
 	private JTextField txtid;
