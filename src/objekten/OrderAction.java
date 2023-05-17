@@ -1,11 +1,4 @@
 package objekten;
-
-
-
-
-
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,22 +13,31 @@ import javax.swing.table.DefaultTableModel;
 import database.DbConnection;
 import date_action.OrderInterface;
 
+/**
+ * Die Class macht die Datenbank function (CRUD) für"Order" Oberfläche;
+ * @author samehm
+ *
+ */
 public class OrderAction implements OrderInterface{
 	
-	
-	
+	/**
+	 * Die Methode ist noch nicht fertig
+	 */
 	@Override
 	public ArrayList<OrderObjekt> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Die Methode fügt einen neuen Order hinzu und speichert ihn in der Datenbank
+	 * Sie macht nicht ,ob keinen Connection ist;
+	 */
 	@Override
 	public void addOrder(OrderObjekt order) {
 		// TODO Auto-generated method stub
 		Connection con=DbConnection.getConnection();
 		if(con==null) {
-			
 			return;
 		}
 		else {
@@ -62,21 +64,27 @@ public class OrderAction implements OrderInterface{
 				}
 			}
 		}
-		
 	}
 
+	/**
+	 * Die Methode ist noch nicht fertig.
+	 */
 	@Override
 	public void update(OrderObjekt order) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
+	/**
+	 * Die Methode ist noch nicht fertig
+	 */
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * Die Methode fügt einen neuen Produkt in Order hinzu und speichert ihn in der Datenbank
+	 */
 	@Override
 	public void addItem(OrderObjekt order) {
 		// TODO Auto-generated method stub
@@ -110,9 +118,11 @@ public class OrderAction implements OrderInterface{
 				}
 			}
 		}
-		
 	}
 
+	/**
+	 * Es funktioniert, wenn Sie auf die Bestelltabelle (Order) klicken und die Produkttabelle (Order Items)filtern und die Produkte anzeigen, die zur ausgewählten Bestellung gehören
+	 */
 	@Override
 	public void itemfilter(JTextField txtid, JTable table) {
 		// TODO Auto-generated method stub
