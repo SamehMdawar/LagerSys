@@ -24,6 +24,8 @@ import database.DbConnection;
 import date_action.ProductActionListener;
 import objekten.CategoryAction;
 import objekten.CategoryObjekt;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Category extends JPanel {
 	private JTextField txtId;
@@ -53,6 +55,17 @@ public class Category extends JPanel {
 		setLayout(null);
 		
 		txtId = new JTextField();
+		txtId.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char  k_code = e.getKeyChar();
+			      if((Character.isDigit(k_code)))
+			    	  txtId.setText(txtId.getText());
+			       else
+			    	   e.consume();
+			}
+		});
+
 		txtId.setBounds(74, 43, 86, 20);
 		add(txtId);
 		txtId.setColumns(10);
@@ -218,16 +231,9 @@ public class Category extends JPanel {
 		 
 	}
 	
-	private class myactionListener implements ActionListener{
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			Category.this.showDataTable();
-			System.out.println();
-		}
-		
-	}
 	
 }
+
+
 

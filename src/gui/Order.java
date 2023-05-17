@@ -3,10 +3,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 
 import javax.swing.JButton;
@@ -126,6 +128,23 @@ public class Order extends JPanel{
 		panel.add(btnNewOrder);
 		
 		JButton btnPayOrder = new JButton("Pay / Order now");
+		btnPayOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * Print 2 Tabelle auf dem Papier
+				 */
+				MessageFormat headerOrder=new MessageFormat("Order");
+				MessageFormat headerItem=new MessageFormat("Order Items");
+				MessageFormat footer=new MessageFormat("Sameh Mdawar - cbm GmbH Bremen");
+				try {
+					table.print(JTable.PrintMode.FIT_WIDTH, headerItem, footer);
+					table2.print(JTable.PrintMode.FIT_WIDTH, headerOrder, footer);
+				} catch (PrinterException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPayOrder.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnPayOrder.setBounds(461, 224, 123, 36);
 		panel.add(btnPayOrder);
