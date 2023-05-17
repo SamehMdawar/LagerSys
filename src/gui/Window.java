@@ -170,7 +170,7 @@ public class Window extends JFrame{
 	        Date date=new Date();
 	        String strDate = formatter.format(date);  
 	        lblDate.setText("Datum: "+strDate);
-	        
+	       
 	        getContentPane().add(lblDate);
 	        
 	        lblTime = new JLabel("Datum: 05/11/2023");

@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,9 +16,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
-import objekten.CategoryAction;
-import objekten.CategoryObjekt;
+import database.DbConnection;
 
 public class Costumer extends JPanel{
 	private JPanel panel;
@@ -27,7 +31,10 @@ public class Costumer extends JPanel{
 	private JTextField txtEmail;
 	private JTextField txtAdr;
 	private JTextField txtTel;
-	private JTable table_1;
+	private JTable table1;
+	private DefaultTableModel tableView;
+	private Connection con;
+	private String[] columnNames = {"Id", "Vorname", "Nachname", "Addresse","E-Mail","Tel"};
 
 	public Costumer () {
 		setBackground(new Color(240, 240, 240));
@@ -66,6 +73,23 @@ public class Costumer extends JPanel{
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Connection con=new DbConnection().getConnection();
+				String sql="INSERT INTO customer(fname,lname,addr,email,tel)VALUES(?,?,?,?,?)";
+				PreparedStatement pstmt;
+				try {
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, txtVname.getText());
+					pstmt.setString(2, txtNname.getText());
+					pstmt.setString(3, txtAdr.getText());
+					pstmt.setString(4, txtEmail.getText());
+					pstmt.setString(5, txtTel.getText());
+					
+					pstmt.execute();
+					showItemsIntable();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -118,15 +142,54 @@ public class Costumer extends JPanel{
 		scrollPane.setBounds(24, 32, 569, 196);
 		panel_1.add(scrollPane);
 		
-		table_1 = new JTable();
-		scrollPane.setViewportView(table_1);
+		table1 = new JTable();
+		scrollPane.setViewportView(table1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Costumer List:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_2.setBounds(23, 11, 137, 14);
 		panel_1.add(lblNewLabel_2);
-
+		showItemsIntable();
 
 		
 	}
+	private void showItemsIntable() {
+		String id;
+		String vorname;
+		String nachname;
+		String addresse;
+		String email;
+		String tel;
+		
+		tableView=new DefaultTableModel();
+		table1.setModel(tableView);
+		
+		for(String n:columnNames) {
+			tableView.addColumn(n);
+		}
+		con=DbConnection.getConnection();
+		String sql="SELECT * FROM customer";
+		PreparedStatement pstmt;
+		ResultSet rs ;
+		try {
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				id=rs.getString("id");
+				vorname=rs.getString("fname");
+				nachname=rs.getString("lname");
+				addresse=rs.getString("addr");
+				email=rs.getString("email");
+				tel=rs.getString("tel");
+				tableView.addRow(new Object[] {id,vorname,nachname,addresse,email,tel});
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 }
+}
+

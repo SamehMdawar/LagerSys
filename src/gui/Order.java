@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -38,11 +39,14 @@ public class Order extends JPanel{
 	private Connection con;
 	private JTextField txtqty;
 	private DefaultTableModel tableView;
+	
 	private String[] columnNames = {"Id", "Order Nr.", "Gesamtpreis", "Datum"};
+	private String[] columnItemsNames = {"Id", "Product","Qty","Price", "Gesamtpreis"};
+	
 	private JTable table2;
 	
 	public Order() {
-		
+		LocalDateTime dtm = LocalDateTime.now();  
 		setBackground(new Color(240, 240, 240));
 		setLayout(null);
 		JPanel panel = new JPanel();
@@ -109,22 +113,14 @@ public class Order extends JPanel{
 		
 		
 		JButton btnAdd = new JButton("Add Item");
+	
 		
 		btnAdd.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnAdd.setBounds(461, 43, 123, 33);
 		panel.add(btnAdd);
 		
 		JButton btnNewOrder = new JButton("New Order");
-		btnNewOrder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				/*
-				txtid.setEditable(true);
-				comboCustomer.setEditable(true);
-				comboPro.setEditable(false);
-				comboDate.setEditable(false);
-				*/
-			}
-		});
+	
 		btnNewOrder.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewOrder.setBounds(461, 163, 123, 33);
 		panel.add(btnNewOrder);
@@ -209,6 +205,8 @@ public class Order extends JPanel{
 		
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setDateFormatString("dd.MM.yyyy");
+		
+	
 		dateChooser.setBounds(120, 138, 193, 20);
 		panel.add(dateChooser);
 		//SimpleDateFormat sdf=new SimpleDateFormat();
@@ -222,7 +220,7 @@ public class Order extends JPanel{
 		
 		OrderActionListener newItem=new OrderActionListener(btnNewOrder,txtid,comboPro,comboCustomer,dateChooser,txtqty,txtPrice,txtTotal);
 		btnAdd.addActionListener(newItem);
-		
+		showItemsIntable();
 		showDataIntable();
 	}
 	
@@ -255,7 +253,7 @@ public class Order extends JPanel{
 			
 			while(rs.next()) {
 	
-				comboCustomer.addItem(rs.getString("fname"));
+				comboCustomer.addItem(rs.getString("id")+"-"+rs.getString("fname"));
 				
 			}
 		} catch (SQLException e1) {
@@ -298,4 +296,41 @@ public class Order extends JPanel{
 		}
 		
 	}
+	private void showItemsIntable() {
+		String id;
+		String product;
+		String qty;
+		String gesamtpreis;
+		String price;
+		
+		tableView=new DefaultTableModel();
+		table.setModel(tableView);
+		for(String n:columnItemsNames) {
+			tableView.addColumn(n);
+		}
+		con=DbConnection.getConnection();
+		String sql="SELECT id,product,qty,total,price FROM order_detail";
+		PreparedStatement pstmt;
+		ResultSet rs ;
+		try {
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				id=rs.getString("id");
+				product=rs.getString("product");
+				qty=rs.getString("qty");
+				gesamtpreis=rs.getString("total");
+				price=rs.getString("price");
+				
+				tableView.addRow(new Object[] {id,product,qty,price,gesamtpreis});
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+}
+
 }

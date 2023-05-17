@@ -44,14 +44,15 @@ public void actionPerformed(ActionEvent e) {
 	String product = String.valueOf(comboPro.getSelectedItem());
 	SimpleDateFormat sdf=new SimpleDateFormat();
 	String date=sdf.format(dateChooser.getDate());
-	//String customer = String.valueOf(comboCustomer.getSelectedItem());
+	String customer = String.valueOf(comboCustomer.getSelectedItem());
 	
-	//String[] cus = customer.split("-"); // Idnummer vor minus zeichen zurücknehmen
-	//String cust = cus[0];
+	String[] cus = customer.split("-"); // Idnummer vor minus zeichen zurücknehmen
+	String cust = cus[0];
+	
 	if (e.getActionCommand()=="New Order") {
 		
 		
-		OrderObjekt order=new OrderObjekt(0,Integer.parseInt(txtid.getText()),1,total,date);
+		OrderObjekt order=new OrderObjekt(0,Integer.parseInt(txtid.getText()),Integer.parseInt(cust),total,date);
 		OrderAction orderaction=new OrderAction();
 		orderaction.addOrder(order);
 		System.out.println("Done");
