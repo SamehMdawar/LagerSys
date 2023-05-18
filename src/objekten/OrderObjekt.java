@@ -14,7 +14,7 @@ public class OrderObjekt {
 	
 	}
 	
-	/*
+	/**
 	 * new Order
 	 */
 	public OrderObjekt(int id,int order_id,int customer_id,float total,String datum) {
@@ -25,7 +25,7 @@ public class OrderObjekt {
 		this.datum=datum;
 	}
 	
-	/*
+	/**
 	 * Order Detail
 	 */
 	public OrderObjekt(int id,int order_id,String product,int qty,float price,float total) {
