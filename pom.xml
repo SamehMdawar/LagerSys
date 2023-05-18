@@ -24,11 +24,7 @@
     <version>8.0.31</version>
 </dependency>
 
-  	<dependency>
-  		<groupId>fffdf</groupId>
-  		<artifactId>fffdf</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
+
   </dependencies>
   
 </project>
