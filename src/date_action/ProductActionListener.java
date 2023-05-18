@@ -1,5 +1,4 @@
 package date_action;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,7 +10,11 @@ import javax.swing.JTextField;
 import gui.Category;
 import objekten.ProductAction;
 import objekten.ProductObjekt;
-
+/**
+ * Die Class ist als ActionListener für Buttons auf "Product" Oberfläche
+ * @author Sam
+ *
+ */
 public class ProductActionListener implements ActionListener{
 	private JButton button;
 	private JTextField txtName;
@@ -20,7 +23,16 @@ public class ProductActionListener implements ActionListener{
 	private JComboBox<?> comboCat;
 	private JComboBox<?> comboSupplier;
 	
-	
+	/**
+	 * ProductActionListener Konstruktor,
+	 * Argument ist hier, um Element (Input Text , Buttons usw...) auf "Product" Oberfläche als Parameter umzugehen
+	 * @param button
+	 * @param txtName
+	 * @param comboCat
+	 * @param comboSupplier
+	 * @param txtPrice
+	 * @param txtQty
+	 */
 	public ProductActionListener(JButton button, JTextField txtName, JComboBox comboCat,JComboBox comboSupplier,JTextField txtPrice,JTextField txtQty){
 		this.button=button;
 		this.txtName=txtName;
@@ -44,12 +56,21 @@ public class ProductActionListener implements ActionListener{
 		String[] cats = category.split("-"); // Idnummer vor minus zeichen zurücknehmen
 		String catId = cats[0];
 		
+		/**
+		 * Wenn Sie auf die Button mit dem Text "Add" klicken,
+		 */
 		if (e.getActionCommand()=="Add") {
+			/**
+			 * Es wird geprüft, dass alle Eingabefelder nicht leer sindز
+			 */
 			if (txtName.getText().equals("")||txtPrice.getText().equals("")
 					||suppllier.equals("")||category.equals("")
 					|| txtQty.getText().equals("")) {
 				JOptionPane.showMessageDialog(null,"Ein Feld ist leer!","Product", JOptionPane.CANCEL_OPTION);
 			}else {
+				/**
+				 * Hier wird ein neues Produkt hinzugefügt
+				 */
 				price=Float.parseFloat(txtPrice.getText());
 				qty=Integer.parseInt(txtQty.getText());
 				total=price*qty;
@@ -67,6 +88,9 @@ public class ProductActionListener implements ActionListener{
 				
 		}
 		}
+		/**
+		 * Wenn Sie auf die Button mit dem Text "Delete" klicken,
+		 */
 		if (e.getActionCommand()=="Delete") {
 			System.out.println("Delete");
 		}

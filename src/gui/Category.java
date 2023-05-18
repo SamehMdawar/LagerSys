@@ -55,7 +55,12 @@ public class Category extends JPanel {
 		setLayout(null);
 		
 		txtId = new JTextField();
+
 		txtId.addKeyListener(new KeyAdapter() {
+			/**
+			 * Es ist nur die Dateneingabe von Integer zahlen zulässig
+			 * @param e
+			 */
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char  k_code = e.getKeyChar();
@@ -86,10 +91,11 @@ public class Category extends JPanel {
 		JButton btnAdd = new JButton("Insert New");
 		
 		btnAdd.addActionListener(new ActionListener() {
+			/**
+			 * Insert Daten in Datenbank Tabelle und Tabelle auf Oberfläche
+			 * @param e
+			 */
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * Insert Daten in Datenbank Tabelle
-				 */
 				category=new CategoryObjekt();
 				catFunction=new CategoryAction();
 				
@@ -112,6 +118,9 @@ public class Category extends JPanel {
 		JButton btnUpdate = new JButton("Update");
 		
 		btnUpdate.addActionListener(new ActionListener() {
+			/**
+			 * aktualisiert den angegebenen Datensatz basierend auf der ID.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				
 				catFunction=new CategoryAction();
@@ -149,11 +158,6 @@ public class Category extends JPanel {
 		scrollPane_1.setViewportView(table_1);
 		
 		btnDel = new JButton("Delete");
-		btnDel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				/////////
-			}
-		});
 
 		btnDel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnDel.setBounds(442, 42, 89, 52);
@@ -198,7 +202,7 @@ public class Category extends JPanel {
 
 	}
 	
-	/*
+	/**
 	 *Daten werden hier in Tabelle angezeigt
 	 */
 	private void showDataTable() {
