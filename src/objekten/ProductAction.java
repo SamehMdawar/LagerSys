@@ -1,5 +1,4 @@
 package objekten;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,15 +8,25 @@ import javax.swing.JOptionPane;
 
 import database.DbConnection;
 import date_action.ProductInterface;
-
+/**
+ * Die Class macht die Datenbank function (CRUD) für"Product" Oberfläche und sie implementiert ProductInterface;
+ * @author Sam
+ *
+ */
 public class ProductAction implements ProductInterface {
 
+	/**
+	 * Die Methode ist noch nicht fertig
+	 * Die Methode sucht nach alle Element von Product in Datenbank und fügt Ergebnis in ein Array hinzu.
+	 */
 	@Override
 	public ArrayList<ProductObjekt> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/**
+	 * Die Methode fügt einen neuen Product hinzu und speichert ihn in der Datenbank
+	 */
 	@Override
 	public void add(ProductObjekt product) {
 		// TODO Auto-generated method stub
@@ -55,7 +64,9 @@ public class ProductAction implements ProductInterface {
 		}
 		
 	}
-
+/**
+ * Die Methode aktualisiert den angegebenen Datensatz basierend auf der ID.
+ */
 	@Override
 	public void update(ProductObjekt product) {
 		// TODO Auto-generated method stub
@@ -92,6 +103,10 @@ public class ProductAction implements ProductInterface {
 		}
 	}
 
+	/**
+	 * Die Methode ist noch nicht fertig.
+	 * Sie ist für Einen Datensatz Product löschen.
+	 */
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub

@@ -1,6 +1,7 @@
 package objekten;
 
 /**
+ * Class ist für Objekt von Product
  * @author Sam
  *
  */
@@ -17,7 +18,16 @@ public class ProductObjekt {
 	public ProductObjekt() {
 		
 	}
-	
+	/**
+	 * new Product Konstruktor
+	 * @param id
+	 * @param name
+	 * @param category_id
+	 * @param supplier_id
+	 * @param price
+	 * @param qty
+	 * @param total
+	 */
 	public ProductObjekt(int id, String name,int category_id,int supplier_id,float price,int qty,float total) {
 		this.id=id;
 		this.name=name;
@@ -27,7 +37,9 @@ public class ProductObjekt {
 		this.qty=qty;
 		this.total=total;
 	}
-
+	/**
+	 * Hier ist Getters und Setters von Product Objekt.
+	 */
 	public int getId() {
 		return id;
 	}

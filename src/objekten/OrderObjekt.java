@@ -54,7 +54,7 @@ public class OrderObjekt {
 	}
 
 	/**
-	 * Hier ist Getters und Setters von Order Objekt (Order und Product)
+	 * Hier ist Getters und Setters von Order Objekt (Order und Item)
 	 * @return
 	 */
 	public float getPrice() {
