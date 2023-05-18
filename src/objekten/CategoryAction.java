@@ -1,5 +1,4 @@
 package objekten;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,16 +8,27 @@ import javax.swing.JOptionPane;
 
 import database.DbConnection;
 import date_action.CategoryInterface;
-
+/**
+ * Die Class macht die Datenbank function (CRUD) für"Category" Oberfläche und sie implementiert CategoryInterface;
+ * @author Sam
+ *
+ */
 public class CategoryAction implements CategoryInterface {
-	
-	
+
+/**
+ * Die Methode ist noch nicht fertig.
+ * Die Methode sucht nach alle Element von Category in Datenbank und fügt Ergebnis in ein Array hinzu. 
+ */
 	@Override
 	public ArrayList<CategoryObjekt> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Die Methode fügt einen neuen Category hinzu und speichert ihn in der Datenbank.
+	 *  (Insert neu Category)
+	 */
 	@Override
 	public void add(CategoryObjekt category) {
 		// TODO Auto-generated method stub
@@ -49,15 +59,21 @@ public class CategoryAction implements CategoryInterface {
 				}
 			}
 		}
-		
 	}
 
+	/**
+	 * Die Methode ist noch nicht fertig.
+	 * Die Methode hier löscht einen Datensatz aus der Category entsprechend der ID
+	 */
 	@Override
 	public void deleteById(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Die Funktion aktualisiert den angegebenen Datensatz basierend auf der ID.
+	 */
 	@Override
 	public void update(CategoryObjekt category) {
 		// TODO Auto-generated method stub

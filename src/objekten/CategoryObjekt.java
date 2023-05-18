@@ -1,5 +1,9 @@
 package objekten;
-
+/**
+ * Class ist für Objekt von Category
+ * @author Sam
+ *
+ */
 public class CategoryObjekt {
 	private int id;
 	private String name;
@@ -8,10 +12,18 @@ public class CategoryObjekt {
 		
 	}
 	
+	/**
+	 * * new Category Konstruktor
+	 * @param id
+	 * @param name
+	 */
 	public CategoryObjekt(int id,String name) {
 		this.id=id;
 		this.name=name;
 	}
+	/**
+	 * Hier ist Getters und Setters von Category Objekt
+	 */
 	public int getId() {
 		return id;
 	}

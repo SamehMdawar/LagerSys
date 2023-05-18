@@ -1,5 +1,9 @@
 package objekten;
-
+/**
+ * Class ist für Objekt von Order 
+ * @author Sam
+ *
+ */
 public class OrderObjekt {
 	private int id;
 	private int order_id;
@@ -13,10 +17,15 @@ public class OrderObjekt {
 	public OrderObjekt() {
 	
 	}
-	
 	/**
-	 * new Order
+	 * new Order Konstruktor
+	 * @param id
+	 * @param order_id
+	 * @param customer_id
+	 * @param total
+	 * @param datum
 	 */
+	
 	public OrderObjekt(int id,int order_id,int customer_id,float total,String datum) {
 		this.id=id;
 		this.order_id=order_id;
@@ -24,9 +33,15 @@ public class OrderObjekt {
 		this.total=total;
 		this.datum=datum;
 	}
-	
 	/**
-	 * Order Detail
+	 * new Order Konstruktor ist für Items(Product) in Order
+	 * (Order Detail)
+	 * @param id
+	 * @param order_id
+	 * @param product
+	 * @param qty
+	 * @param price
+	 * @param total
 	 */
 	public OrderObjekt(int id,int order_id,String product,int qty,float price,float total) {
 		this.id=id;
@@ -38,6 +53,10 @@ public class OrderObjekt {
 		this.total=total;
 	}
 
+	/**
+	 * Hier ist Getters und Setters von Order Objekt (Order und Product)
+	 * @return
+	 */
 	public float getPrice() {
 		return price;
 	}

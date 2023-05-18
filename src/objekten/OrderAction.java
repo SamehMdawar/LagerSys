@@ -75,7 +75,8 @@ public class OrderAction implements OrderInterface{
 	}
 
 	/**
-	 * Die Methode ist noch nicht fertig
+	 * Die Methode ist noch nicht fertig.
+	 * Sie ist für Einen Datensatz löschen.
 	 */
 	@Override
 	public void delete(int id) {
@@ -83,7 +84,7 @@ public class OrderAction implements OrderInterface{
 	}
 
 	/**
-	 * Die Methode fügt einen neuen Produkt in Order hinzu und speichert ihn in der Datenbank
+	 * Die Methode fügt einen neuen Produkt(Item) in Order hinzu und speichert ihn in der Datenbank
 	 */
 	@Override
 	public void addItem(OrderObjekt order) {
