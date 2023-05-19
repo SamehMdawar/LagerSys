@@ -45,12 +45,8 @@ public class Category extends JPanel {
 	private CategoryObjekt category;
 	private CategoryAction catFunction;
 	private Connection con;
-	private JButton btntow;
-	
-	
-	public Category() {
-		
 
+	public Category() {
 		setBackground(new Color(240, 240, 240));
 		setLayout(null);
 		
@@ -154,10 +150,8 @@ public class Category extends JPanel {
 					txtName.setText("");
 					showDataTable() ;
 				}
-				
 			}
 		});
-		
 
 		btnUpdate.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnUpdate.setBounds(329, 42, 89, 52);
@@ -252,13 +246,6 @@ public class Category extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
-		 
 	}
-	
 
-	
 }
-
-
-

@@ -132,28 +132,26 @@ public class Order extends JPanel{
 		txtTotal.setBounds(120, 234, 193, 20);
 		panel.add(txtTotal);
 		txtTotal.setColumns(10);
-		
+		txtTotal.setEditable(false);
 		
 		JButton btnAdd = new JButton("Add Item");
-	
-		
 		btnAdd.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnAdd.setBounds(461, 43, 123, 33);
 		panel.add(btnAdd);
 		
 		JButton btnNewOrder = new JButton("New Order");
-	
 		btnNewOrder.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewOrder.setBounds(461, 163, 123, 33);
 		panel.add(btnNewOrder);
 		
 		JButton btnPayOrder = new JButton("Pay / Order now");
 		btnPayOrder.addActionListener(new ActionListener() {
+			/**
+			 * Einfacher und schneller Drucker. 
+			 * Print 2 Tabelle auf dem Papier
+			 * @param e
+			 */
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * Print 2 Tabelle auf dem Papier
-				 */
-				
 				MessageFormat headerItem=new MessageFormat("Order Items");
 				MessageFormat footer=new MessageFormat("Sameh Mdawar - cbm GmbH Bremen");
 				try {
@@ -298,7 +296,7 @@ public class Order extends JPanel{
 		lblQty.setBounds(20, 171, 76, 14);
 		panel.add(lblQty);
 		
-		/*
+		/**
 		 * ActionListener für Button
 		 */
 		OrderActionListener newOrder=new OrderActionListener(btnNewOrder,txtid,comboPro,comboCustomer,dateChooser,txtqty,txtPrice,txtTotal);
@@ -309,7 +307,10 @@ public class Order extends JPanel{
 		showItemsIntable();
 		showDataIntable();
 	}
-	
+	/**
+	 * productsname werden aus der Datenbank abgerufen und in Combobox abgelegt.
+	 * @param comboPro
+	 */
 	private void addProduct2Box(JComboBox comboPro) {
 		con = DbConnection.getConnection();
 		String sql="SELECT * FROM products";
@@ -319,17 +320,20 @@ public class Order extends JPanel{
 			ResultSet rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-	
-				comboPro.addItem(rs.getString("name"));
-				
+				comboPro.addItem(rs.getString("name"));	
 			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Customersname werden aus der Datenbank abgerufen und in Combobox abgelegt.
+	 * @param comboCustomer
+	 */
 	private void addCustomer2Box(JComboBox comboCustomer) {
+		comboCustomer.insertItemAt("0-Kasse", 0);
+		comboCustomer.setSelectedIndex(0);
 		con = DbConnection.getConnection();
 		String sql="SELECT * FROM customer";
 		PreparedStatement pstmt;
@@ -338,7 +342,6 @@ public class Order extends JPanel{
 			ResultSet rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-	
 				comboCustomer.addItem(rs.getString("id")+"-"+rs.getString("fname"));
 				
 			}
@@ -347,13 +350,14 @@ public class Order extends JPanel{
 			e1.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Orderdaten werden hier in Tabelle angezeigt
+	 */
 	private void showDataIntable() {
 		String id;
 		String order_no;
 		String gesamtpreis;
 		String datum;
-		
 		tableView=new DefaultTableModel();
 		table2.setModel(tableView);
 		for(String n:columnNames) {
@@ -371,15 +375,16 @@ public class Order extends JPanel{
 				order_no=rs.getString("order_no");
 				gesamtpreis=rs.getString("total");
 				datum=rs.getString("datum");
-				tableView.addRow(new Object[] {id,order_no,gesamtpreis,datum});
-				
+				tableView.addRow(new Object[] {id,order_no,gesamtpreis,datum});	
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
+	/**
+	 * Produktdaten in Orders werden hier in Tabelle angezeigt
+	 */
 	private void showItemsIntable() {
 		String id;
 		String product;

@@ -41,14 +41,12 @@ public class Product extends JPanel{
 	private Connection con;
 	private ProductObjekt productObjekt;
 	private ProductAction productAction;
-	
 	private DefaultTableModel tableView;
 	private String[] columnNames = {"Id", "Name", "Menge", "Preis", "Gesamtpreis"};
 	private JTextField txtId;
 	public Product() {
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setLayout(null);
-		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBounds(10, 25, 613, 271);
@@ -119,17 +117,15 @@ public class Product extends JPanel{
 				productAction=new ProductAction();
 				String suppllier = String.valueOf(comboSupplier.getSelectedItem());
 				String category = String.valueOf(comboCat.getSelectedItem());
-				
 				String[] cats = category.split("-"); // Idnummer vor minus zeichen zurücknehmen
 				String catId = cats[0];
-				
-				
 				if (txtName.getText().equals("")||txtPrice.getText().equals("")
 						||suppllier.equals("")||category.equals("")
 						|| txtQty.getText().equals("")) {
 					JOptionPane.showMessageDialog(null,"Ein Feld ist leer!","Product", JOptionPane.CANCEL_OPTION);
 					//System.out.println(category);
 				}else {
+					total=Float.parseFloat(txtQty.getText())*Float.parseFloat(txtPrice.getText());
 					productObjekt =new ProductObjekt(Integer.parseInt(txtId.getText()),txtName.getText(),
 							Integer.parseInt(catId),
 							Integer.parseInt(catId),//	muss das später zu supplier verändern
@@ -139,7 +135,6 @@ public class Product extends JPanel{
 					productAction.update(productObjekt);
 					showDatainTable();
 				}
-				
 			}
 		});
 		btnUpdate.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -180,16 +175,12 @@ public class Product extends JPanel{
 			 */
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
 					DefaultTableModel model=(DefaultTableModel)table.getModel();
 					int s=table.getSelectedRow();
 					txtId.setText(model.getValueAt(s, 0).toString());
 					txtName.setText(model.getValueAt(s, 1).toString());
 					txtQty.setText(model.getValueAt(s, 2).toString());
 					txtPrice.setText(model.getValueAt(s, 3).toString());
-	
-				
-			
 			}
 		});
 		scrollPane.setViewportView(table);
