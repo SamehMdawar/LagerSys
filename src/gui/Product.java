@@ -37,7 +37,7 @@ public class Product extends JPanel{
 	private JTextField txtQty;
 	private JTable table;
 	private JTextField txtProFindName;
-	private JComboBox comboCat;
+	private JComboBox<String> comboCat;
 	private Connection con;
 	private ProductObjekt productObjekt;
 	private ProductAction productAction;
@@ -174,6 +174,10 @@ public class Product extends JPanel{
 		
 		table = new JTable();
 		table.addMouseListener(new MouseAdapter() {
+			/**
+			 * Es ruft Daten aus dem ausgewählten Tabellendatensatz ab
+			 * und fügt die Werte in die Eingabefelder ein
+			 */
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -223,9 +227,12 @@ public class Product extends JPanel{
 		
 	}
 	
-	
+	/**
+	 * Categorynamen werden aus der Datenbank abgerufen und in Combobox abgelegt.
+	 */
 	private void addCat2Combobox() {
-		
+		comboCat.insertItemAt("0-Sonstige", 0);
+		comboCat.setSelectedIndex(0);
 		con = DbConnection.getConnection();
 		String sql="SELECT * FROM category";
 		PreparedStatement pstmt;
@@ -234,17 +241,17 @@ public class Product extends JPanel{
 			ResultSet rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-	
 				comboCat.addItem(rs.getString("id")+"-"+ rs.getString("name"));
-				
 			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 	}
 	
+	/**
+	 * Daten werden hier in Tabelle angezeigt
+	 */
 	private void showDatainTable() {
 		String id;
 		String name;
