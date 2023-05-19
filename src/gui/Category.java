@@ -58,6 +58,7 @@ public class Category extends JPanel {
 
 		txtId.addKeyListener(new KeyAdapter() {
 			/**
+			 * Validate textfield
 			 * Es ist nur die Dateneingabe von Integer zahlen zulässig
 			 * @param e
 			 */
