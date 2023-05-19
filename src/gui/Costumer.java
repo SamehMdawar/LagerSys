@@ -19,7 +19,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import database.DbConnection;
-
+/**
+ * Customer Oberfläche
+ * @author Sam
+ *
+ */
 public class Costumer extends JPanel{
 	private JPanel panel;
 	private JTextField textField;

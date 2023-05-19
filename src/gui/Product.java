@@ -30,7 +30,11 @@ import objekten.ProductObjekt;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Product Oberfläche
+ * @author Sam
+ *
+ */
 public class Product extends JPanel{
 	private JTextField txtName;
 	private JTextField txtPrice;

@@ -12,7 +12,11 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
-
+/**
+ * Supplier Oberfläche
+ * @author Sam
+ *
+ */
 public class Supplier extends JPanel {
 	private JPanel panel;
 	private JTextField txtFirma;

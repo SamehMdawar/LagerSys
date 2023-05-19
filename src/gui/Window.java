@@ -16,6 +16,12 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import database.DbConnection;
+/**
+ * Die Hauptschnittstelle, die alle Anwendungsschnittstellen enthält
+ * JFrame
+ * @author Sam
+ *
+ */
 public class Window extends JFrame{
 	private DbConnection db;
 	private JPanel cards; 
@@ -35,14 +41,6 @@ public class Window extends JFrame{
 	private JLabel lblTime;
 	
 	public Window() {
-			/*
-			Connection con =DbConnection.getConnection();
-			if(con==null) {
-				System.out.println("Connection failed!");
-			}else {
-				System.out.println("Connection Successful");
-			}
-			*/
 		 	this.setSize(800,800);
 		 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			this.setResizable(false);
@@ -73,9 +71,7 @@ public class Window extends JFrame{
 	        costumer.setLayout(null);
 	        cards.add(supplier,"Supplier");
 	        supplier.setLayout(null);
-	        
-	        
-	        
+
 	        getContentPane().add(cards);
 	        
 	        JPanel panel = new JPanel();
@@ -85,8 +81,6 @@ public class Window extends JFrame{
 	        getContentPane().add(panel);
 	        panel.setLayout(null);
 	       
-	       
-	        
 	        button2=new JButton("Product");
 	        button2.setBorderPainted(false);
 	        button2.setForeground(new Color(255, 255, 255));

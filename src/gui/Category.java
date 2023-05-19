@@ -26,7 +26,11 @@ import objekten.CategoryAction;
 import objekten.CategoryObjekt;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+/**
+ * Category Oberfläche
+ * @author Sam
+ *
+ */
 public class Category extends JPanel {
 	private JTextField txtId;
 	private JTextField txtName;
