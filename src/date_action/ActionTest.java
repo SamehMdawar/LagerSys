@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-
+/**
+ * Testen Class
+ * @author Sam
+ *
+ */
 public class ActionTest implements ActionListener{
 	private JButton button;
 
