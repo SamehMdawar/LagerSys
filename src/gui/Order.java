@@ -33,6 +33,8 @@ import com.toedter.calendar.JDateChooser;
 import database.DbConnection;
 import date_action.OrderActionListener;
 import objekten.OrderAction;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Order extends JPanel{
 	private JPanel panel;
@@ -91,10 +93,24 @@ public class Order extends JPanel{
 		panel.add(lblNewLabel_1);
 		
 		txtid = new JTextField();
+		txtid.addKeyListener(new KeyAdapter() {
+			/**
+			 * Validate textfield
+			 * Es ist nur die Dateneingabe von Integer zahlen zulässig
+			 * else : Das Event wird nicht gesendet oder verarbeitet.
+			 */
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char  k_code = e.getKeyChar();
+			      if((Character.isDigit(k_code)))
+			    	  txtid.setText(txtid.getText());
+			       else
+			    	   e.consume();
+			}
+		});
 		txtid.setBounds(120, 46, 193, 20);
 		panel.add(txtid);
 		txtid.setColumns(10);
-		//txtid.setEditable(false);
 		
 		JComboBox comboPro = new JComboBox();
 		comboPro.setBounds(120, 74, 193, 22);
@@ -256,6 +272,23 @@ public class Order extends JPanel{
 		addCustomer2Box(comboCustomer);
 		
 		txtqty = new JTextField();
+		txtqty.addKeyListener(new KeyAdapter() {
+			/**
+			 * Validate textfield
+			 * Es ist nur die Dateneingabe von Integer zahlen zulässig
+			 * else : Das Event wird nicht gesendet oder verarbeitet.
+			 * @param e
+			 */
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char  k_code = e.getKeyChar();
+			      if((Character.isDigit(k_code)))
+			    	  txtqty.setText(txtqty.getText());
+			       else
+			    	   e.consume();
+			}
+		});
 		
 		txtqty.setColumns(10);
 		txtqty.setBounds(120, 171, 193, 20);

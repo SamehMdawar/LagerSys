@@ -60,15 +60,18 @@ public class Category extends JPanel {
 			/**
 			 * Validate textfield
 			 * Es ist nur die Dateneingabe von Integer zahlen zulässig
+			 * else : Das Event wird nicht gesendet oder verarbeitet.
 			 * @param e
 			 */
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char  k_code = e.getKeyChar();
-			      if((Character.isDigit(k_code)))
+			      if((Character.isDigit(k_code))) {
 			    	  txtId.setText(txtId.getText());
-			       else
+			      }else {
 			    	   e.consume();
+			      	   JOptionPane.showMessageDialog(null,"Bitte geben Sie nur Zahlen ein","Falsche Eingabe", JOptionPane.PLAIN_MESSAGE);
+			      }
 			}
 		});
 
@@ -77,6 +80,23 @@ public class Category extends JPanel {
 		txtId.setColumns(10);
 		
 		txtName = new JTextField();
+		
+		txtName.addKeyListener(new KeyAdapter() {
+			/**
+			 *  Validate textfield
+			 * Es ist nur die Dateneingabe von Buchstabe und Leerzeichen zulässig.
+			 * else : Das Event wird nicht gesendet oder verarbeitet.
+			 */
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char  k_code = e.getKeyChar();
+			      if((Character.isAlphabetic(k_code) || Character.isSpaceChar(k_code) ))
+			    	  txtName.setText(txtName.getText());
+			       else
+			    	   e.consume();
+			}
+		});
+		
 		txtName.setColumns(10);
 		txtName.setBounds(74, 74, 86, 20);
 		add(txtName);
