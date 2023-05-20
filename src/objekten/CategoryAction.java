@@ -67,9 +67,38 @@ public class CategoryAction implements CategoryInterface {
 	 */
 	@Override
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
+		Connection con =DbConnection.getConnection();
+		if(con==null) {
+			return;
+		}
+		else {
+			String sql="DELETE FROM category WHERE id=?";
+			PreparedStatement pstmt;
+			try {
+				pstmt =con.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				JOptionPane.showMessageDialog(null,"Category wurde gelöscht","Delete Category", JOptionPane.PLAIN_MESSAGE);
+				
+				pstmt.execute();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		finally{
+			try {
+				con.close();
+			}catch(SQLException throwables) {
+				throwables.printStackTrace();
+			}
+		}
+		
+		
 		
 	}
+
+}
 
 	/**
 	 * Die Funktion aktualisiert den angegebenen Datensatz basierend auf der ID.

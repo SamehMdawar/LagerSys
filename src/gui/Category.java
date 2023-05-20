@@ -26,6 +26,8 @@ import objekten.CategoryAction;
 import objekten.CategoryObjekt;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  * Category Oberfläche
  * @author Sam
@@ -55,7 +57,7 @@ public class Category extends JPanel {
 		setLayout(null);
 		
 		txtId = new JTextField();
-
+		txtId.setEditable(false);
 		txtId.addKeyListener(new KeyAdapter() {
 			/**
 			 * Validate textfield
@@ -166,6 +168,16 @@ public class Category extends JPanel {
 		add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DefaultTableModel model=(DefaultTableModel)table.getModel();
+				int s=table.getSelectedRow();
+				txtId.setText(model.getValueAt(s, 0).toString());
+				txtName.setText(model.getValueAt(s, 1).toString());
+	
+			}
+		});
 		showDataTable();
 		scrollPane.setViewportView(table);
 		
@@ -177,6 +189,20 @@ public class Category extends JPanel {
 		scrollPane_1.setViewportView(table_1);
 		
 		btnDel = new JButton("Delete");
+		btnDel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				catFunction=new CategoryAction();
+				if(txtId.getText().equals("") || txtName.getText().equals("")) {
+					JOptionPane.showMessageDialog(null,"Input Box ist leer!","Id und Name", JOptionPane.CANCEL_OPTION);
+				}else {
+					catFunction.deleteById(Integer.parseInt(txtId.getText()));
+					txtId.setText("");
+					txtName.setText("");
+					showDataTable() ;
+				}
+			}
+		});
 
 		btnDel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnDel.setBounds(442, 42, 89, 52);
