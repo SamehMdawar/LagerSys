@@ -57,7 +57,8 @@ public void actionPerformed(ActionEvent e) {
 	float price=0;
 	int qty=0;
 	String product = String.valueOf(comboPro.getSelectedItem());
-	SimpleDateFormat sdf=new SimpleDateFormat();
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	
 	String date=sdf.format(dateChooser.getDate());
 	String customer = String.valueOf(comboCustomer.getSelectedItem());
 	

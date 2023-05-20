@@ -156,7 +156,7 @@ public class Order extends JPanel{
 			 * @param e
 			 */
 			public void actionPerformed(ActionEvent e) {
-				MessageFormat headerItem=new MessageFormat("Order Items");
+				MessageFormat headerItem=new MessageFormat("Order Items"+" "+txtid.getText());
 				MessageFormat footer=new MessageFormat("Sameh Mdawar - cbm GmbH Bremen");
 				try {
 					table.print(JTable.PrintMode.FIT_WIDTH, headerItem, footer);
@@ -237,7 +237,7 @@ public class Order extends JPanel{
 		panel_1_1.add(scrollPane_1);
 		
 		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("dd.MM.yyyy");
+		dateChooser.setDateFormatString("yyyy-MM-dd");
         
         Date date=new Date();
         dateChooser.setDate(date);
