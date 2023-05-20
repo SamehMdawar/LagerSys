@@ -23,10 +23,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import actionListener_interface.ProductActionListener;
 import database.DbConnection;
-import date_action.ProductActionListener;
-import objekten.ProductAction;
-import objekten.ProductObjekt;
+import objekten_database_action.ProductAction;
+import objekten_database_action.ProductObjekt;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

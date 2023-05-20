@@ -1,7 +1,7 @@
-package date_action;
+package actionListener_interface;
 import java.util.ArrayList;
 
-import objekten.ProductObjekt;
+import objekten_database_action.ProductObjekt;
 /**
  * Interface Klasse für "Product" Oberfläche,
  * die in ProductAction.java verwendet

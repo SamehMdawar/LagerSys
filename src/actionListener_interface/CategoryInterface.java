@@ -1,6 +1,7 @@
-package date_action;
+package actionListener_interface;
 import java.util.ArrayList;
-import objekten.CategoryObjekt;
+
+import objekten_database_action.CategoryObjekt;
 /**
  * Interface Klasse für "Category" Oberfläche,
  * die in CategoryAction.java verwendet

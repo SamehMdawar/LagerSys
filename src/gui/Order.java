@@ -30,9 +30,10 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
+import actionListener_interface.OrderActionListener;
 import database.DbConnection;
-import date_action.OrderActionListener;
-import objekten.OrderAction;
+import objekten_database_action.OrderAction;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 /**

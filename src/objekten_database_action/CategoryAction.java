@@ -1,4 +1,4 @@
-package objekten;
+package objekten_database_action;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import actionListener_interface.CategoryInterface;
 import database.DbConnection;
-import date_action.CategoryInterface;
 /**
  * Die Class macht die Datenbank function (CRUD) für"Category" Oberfläche und sie implementiert CategoryInterface;
  * @author Sam

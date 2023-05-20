@@ -1,4 +1,4 @@
-package objekten;
+package objekten_database_action;
 /**
  * Class ist für Objekt von Category
  * @author Sam

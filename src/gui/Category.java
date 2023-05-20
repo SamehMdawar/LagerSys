@@ -20,10 +20,11 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import actionListener_interface.ProductActionListener;
 import database.DbConnection;
-import date_action.ProductActionListener;
-import objekten.CategoryAction;
-import objekten.CategoryObjekt;
+import objekten_database_action.CategoryAction;
+import objekten_database_action.CategoryObjekt;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
