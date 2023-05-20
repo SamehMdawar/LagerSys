@@ -156,6 +156,7 @@ public class Product extends JPanel{
 		txtId = new JTextField();
 		txtId.setColumns(10);
 		txtId.setBounds(85, 71, 126, 20);
+		txtId.setEditable(false);
 		panel.add(txtId);
 		
 		addCat2Combobox();
