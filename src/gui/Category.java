@@ -245,6 +245,7 @@ public class Category extends JPanel {
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 16));
 		lblNewLabel_3.setBounds(22, 8, 90, 20);
 		add(lblNewLabel_3);
+		showProductTable();
 
 	}
 	
@@ -278,5 +279,30 @@ public class Category extends JPanel {
 			e.printStackTrace();
 		}
 	}
-
+	
+	private void showProductTable() {
+		String name;
+		DefaultTableModel tableView;
+		tableView=new DefaultTableModel();
+		table_1.setModel(tableView);
+		tableView.addColumn("Name");
+		 con=DbConnection.getConnection();
+		 String sql="SELECT name FROM products";
+		 PreparedStatement pstmt;
+		 ResultSet rs;
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {			
+				name=rs.getString("name");
+				
+				tableView.addRow(new Object[] {name});
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
