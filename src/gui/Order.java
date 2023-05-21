@@ -206,8 +206,7 @@ public class Order extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				DefaultTableModel model=(DefaultTableModel)table.getModel();
 				int s=table.getSelectedRow();
-				
-				txtid.setText(model.getValueAt(s, 0).toString());
+				//txtid.setText(model.getValueAt(s, 0).toString());
 				comboPro.setSelectedIndex(s);
 				txtqty.setText(model.getValueAt(s, 2).toString());
 				txtPrice.setText(model.getValueAt(s, 3).toString());
