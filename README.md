@@ -2,7 +2,7 @@
 ## Lernprojekt (Java, Swing, OOP, Datenbank).
 Status: In Progress (Projekt zu Lernzwecken, teilweise unvollständig).
 ------------------------------------------------------------------------
-Projektziel
+Projektziel: 
 Das Ziel dieses Projekts ist es, ein kleines und einfaches Programm zu entwerfen und zu
 entwickeln, das Unternehmern dabei hilft, Produkte hinzuzufügen, Kunden zu
 registrieren, Verkaufsprozesse durchzuführen und den Verkaufsgewinn einfach und
