@@ -1,5 +1,5 @@
 # LagerSys
-##Lernprojekt (Java, Swing, OOP, Datenbank).
+## Lernprojekt (Java, Swing, OOP, Datenbank).
 Status: In Progress (Projekt zu Lernzwecken, teilweise unvollständig).
 ------------------------------------------------------------------------
 Projektziel
